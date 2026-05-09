@@ -20,17 +20,23 @@ El lab tiene tres capas defensivas encadenadas:
 ---
 
 ## 🏗️ Arquitectura
-🏗️ Arquitectura
-ComponenteIPRolUbuntu Server (Wazuh Manager)100.84.115.29SIEM — recibe y correlaciona alertasWindows 10 (WIND10)—Endpoint víctima — Wazuh Agent + SysmonInfection Monkey Island100.111.171.76Simulador de ransomwareSlack #soc-incidents—Canal de alertas en tiempo realVirusTotal API—Enriquecimiento automático de hashes
-Flujo del lab:
-🖥️ Infection Monkey → cifra archivos en WIND10
-👁️ Wazuh Agent → detecta el comportamiento y genera alertas nivel 15
-📡 Wazuh Manager → correlaciona con MITRE ATT&CK (T1105, T1059.001)
-🔔 Slack webhook → notifica al canal #soc-incidents en tiempo real
-🦠 VirusTotal API → analiza automáticamente los hashes detectados por Syscheck
-🚫 Active Response → ejecuta firewall-drop en alertas nivel 7+
 
+**Red interna (NAT) — VirtualBox**
 
+- 🖥️ **Ubuntu Server** `100.84.115.29` — Wazuh Manager (SIEM)
+- 💻 **Windows 10 WIND10** — Wazuh Agent + Sysmon (víctima)
+- 🐒 **Infection Monkey** `100.111.171.76` — Simulador de ransomware
+
+**Flujo de detección:**
+
+1. Infection Monkey cifra archivos en WIND10
+2. Wazuh Agent detecta el comportamiento → alerta nivel 15
+3. Wazuh Manager correlaciona con MITRE ATT&CK
+4. Slack recibe la alerta en `#soc-incidents`
+5. VirusTotal analiza los hashes automáticamente
+6. Active Response ejecuta `firewall-drop` en alertas nivel 7+
+
+   
 ---
 
 ## ⚔️ El ataque — Infection Monkey

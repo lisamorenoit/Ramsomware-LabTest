@@ -91,7 +91,7 @@ Wazuh generó **59 alertas entre las 21:28:07 y las 21:28:48** correlacionadas c
 ## 🔔 Alertas en Slack — #soc-incidents
 
 ![Slack soc-incidents](screenshots/sLACK.png)
-![Slack soc-incidents slack](slack alert ransomware.png)
+![Slack soc-incidents slack](screenshots/slackalertransomware.png)
 
 Las alertas llegaron automáticamente al canal `#soc-incidents`. El webhook actúa como canal SOC — cualquier analista recibe la notificación sin tener Wazuh abierto.
 

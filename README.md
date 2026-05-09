@@ -20,26 +20,17 @@ El lab tiene tres capas defensivas encadenadas:
 ---
 
 ## 🏗️ Arquitectura
-┌─────────────────────────────────────────────┐
-│               RED INTERNA (NAT)             │
-│                                             │
-│  ┌─────────────────┐   ┌─────────────────┐  │
-│  │  Ubuntu Server  │◄─►│  Windows 10     │  │
-│  │  Wazuh Manager  │   │  Wazuh Agent    │  │
-│  │  100.84.115.29  │   │  Sysmon         │  │
-│  └────────┬────────┘   └────────▲────────┘  │
-│           │                     │            │
-│           │         ┌───────────┴──────────┐ │
-│           │         │  Infection Monkey    │ │
-│           │         │  Island Server       │ │
-│           │         │  100.111.171.76      │ │
-│           │         └──────────────────────┘ │
-└───────────┼─────────────────────────────────┘
-            ▼
-   ┌─────────────────┐    ┌──────────────────┐
-   │  Slack          │    │  VirusTotal API  │
-   │  #soc-incidents │    │  (hash lookup)   │
-   └─────────────────┘    └──────────────────┘
+🏗️ Arquitectura
+ComponenteIPRolUbuntu Server (Wazuh Manager)100.84.115.29SIEM — recibe y correlaciona alertasWindows 10 (WIND10)—Endpoint víctima — Wazuh Agent + SysmonInfection Monkey Island100.111.171.76Simulador de ransomwareSlack #soc-incidents—Canal de alertas en tiempo realVirusTotal API—Enriquecimiento automático de hashes
+Flujo del lab:
+🖥️ Infection Monkey → cifra archivos en WIND10
+👁️ Wazuh Agent → detecta el comportamiento y genera alertas nivel 15
+📡 Wazuh Manager → correlaciona con MITRE ATT&CK (T1105, T1059.001)
+🔔 Slack webhook → notifica al canal #soc-incidents en tiempo real
+🦠 VirusTotal API → analiza automáticamente los hashes detectados por Syscheck
+🚫 Active Response → ejecuta firewall-drop en alertas nivel 7+
+
+
 ---
 
 ## ⚔️ El ataque — Infection Monkey

@@ -1,4 +1,4 @@
-🦠 Ransomware Detection Home Lab — Wazuh + Infection Monkey
+#🦠 Ransomware Detection Home Lab — Wazuh + Infection Monkey
 
 Home Lab Personal · Abril 2026
 Analista: Lisa M. Moreno | Rol: Blue Team / SOC Analyst

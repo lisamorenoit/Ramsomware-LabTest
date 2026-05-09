@@ -1,4 +1,4 @@
-markdown# 🦠 Ransomware Detection Home Lab — Wazuh + Infection Monkey
+# 🦠 Ransomware Detection Home Lab — Wazuh + Infection Monkey
 
 **Home Lab Personal · Abril 2026**  
 **Analista:** Lisa M. Moreno | **Rol:** Blue Team / SOC Analyst  
@@ -35,12 +35,11 @@ El lab tiene tres capas defensivas encadenadas:
 │           │         │  100.111.171.76      │ │
 │           │         └──────────────────────┘ │
 └───────────┼─────────────────────────────────┘
-▼
-┌─────────────────┐    ┌──────────────────┐
-│  Slack          │    │  VirusTotal API  │
-│  #soc-incidents │    │  (hash lookup)   │
-└─────────────────┘    └──────────────────┘
-
+            ▼
+   ┌─────────────────┐    ┌──────────────────┐
+   │  Slack          │    │  VirusTotal API  │
+   │  #soc-incidents │    │  (hash lookup)   │
+   └─────────────────┘    └──────────────────┘
 ---
 
 ## ⚔️ El ataque — Infection Monkey
@@ -103,8 +102,6 @@ Las alertas llegaron automáticamente al canal `#soc-incidents`. El webhook act�
 ## ⚙️ Configuración — ossec.conf
 
 ![ossec.conf integraciones](screenshots/Screenshot_10.png)
-
-![ossec.conf virustotal slack](screenshots/Integrar%20virus%20total%20a%20wazuh%20y%20slack.png)
 
 Tres integraciones en `/var/ossec/etc/ossec.conf`:
 
@@ -169,4 +166,4 @@ Esto ilustra la brecha real entre detección y respuesta: un SIEM da visibilidad
 ---
 
 *Lisa M. Moreno · Cybersecurity Analyst · Blue Team & SOC*  
-*[LinkedIn](https://www.linkedin.com/in/lisamorenoit) · [Portfolio](https://lisamorenoit.github.io) · [GitHub](https://github.com/lisamorenoit)*
+*[LinkedIn](https://www.linkedin.com/in/lisa-marie-moreno) · [Portfolio](https://lisamorenoit.github.io) · [GitHub](https://github.com/lisamorenoit)*
